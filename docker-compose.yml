@@ -1,0 +1,16 @@
+services:
+  strapi:
+    build:
+      context: ./build-context
+      args:
+        - STRAPI_VERSION=${STRAPI_VERSION:-3.6.8}
+    image: local-strapi
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./app:/srv/app
+    ports:
+      - target: 1337
+        published: ${PORT:-1337}
+        protocol: tcp
+        mode: host
