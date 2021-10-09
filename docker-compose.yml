@@ -7,6 +7,11 @@ services:
     image: local-strapi
     restart: unless-stopped
     tty: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
     volumes:
       - ./app:/srv/app
     ports:
@@ -14,3 +19,4 @@ services:
         published: ${PORT:-1337}
         protocol: tcp
         mode: host
+    env_file: .env

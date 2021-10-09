@@ -8,8 +8,8 @@ if [[ "${1}" = "-r" ]]; then
   shift
 fi
 
-pushd "$(dirname "$0")"
+pushd "$(dirname "$0")/.."
 
-docker-compose down ${EXTRA} "$@"
+docker-compose down ${EXTRA} "$@" --remove-orphans
 
 popd

@@ -1,4 +1,5 @@
 #!/bin/sh
+
 set -ea
 
 if [ "$1" = "strapi" ]; then
@@ -43,6 +44,18 @@ if [ "$1" = "strapi" ]; then
   fi
 
 fi
+
+echo "Overriding config/server.js..."
+
+cp -f /home/server.js /srv/app/config/server.js
+
+echo "Overriding config/middleware.js..."
+
+cp -f /home/middleware.js /srv/app/config/middleware.js
+
+echo "Overriding config/functions/cron.js..."
+
+cp -f /home/cron.js /srv/app/config/functions/cron.js
 
 echo "Starting your app..."
 

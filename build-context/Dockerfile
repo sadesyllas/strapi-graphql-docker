@@ -12,6 +12,12 @@ VOLUME /srv/app
 
 EXPOSE 1337
 
+COPY ./overrides/config/server.js /home/
+
+COPY ./overrides/config/middleware.js /home/
+
+COPY ./overrides/config/functions/cron.js /home/
+
 COPY entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["entrypoint.sh"]
