@@ -45,18 +45,18 @@ if [ "$1" = "strapi" ]; then
 
 fi
 
-echo "Overriding config/server.js..."
+echo "Overriding config/*.js..."
 
-cp -f /home/server.js /srv/app/config/server.js
+cp -f /home/overrides/config/*.js /srv/app/config/
 
-echo "Overriding config/middleware.js..."
+echo "Overriding config/functions/*.js..."
 
-cp -f /home/middleware.js /srv/app/config/middleware.js
+cp -f /home/overrides/config/functions/*.js /srv/app/config/functions/
 
-echo "Overriding config/functions/cron.js..."
+echo "Adding plugin extensions..."
 
-cp -f /home/cron.js /srv/app/config/functions/cron.js
+cp -rf /home/overrides/extensions/* /srv/app/extensions/
 
-echo "Starting your app..."
+echo "Starting the app..."
 
 exec "$@"
